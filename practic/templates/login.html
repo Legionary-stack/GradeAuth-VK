@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="text-align: center; padding: 50px 0;">
+    <h1>Трекер БРС</h1>
+    <p>Проект в рамках учебной практики.</p>
+    <p>Для просмотра оценок необходимо авторизоваться через внешний сервис (VK ID).</p>
+    <a href="{{ url_for('login') }}" style="display: inline-block; padding: 10px 20px; background: #0077ff; color: #fff; border-radius: 5px; margin-top: 20px;">
+        Войти через VK ID
+    </a>
+</div>
+{% endblock %}

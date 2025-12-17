@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр оценок</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .status-отлично { color: green; font-weight: bold; }
+        .status-хорошо { color: darkgreen; }
+        .status-удовлетворительно { color: orange; }
+        .status-неудовлетворительно { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Просмотр БРС</h1>
+    <p>Администратор: <strong>{{ admin_name }}</strong> | Просматривается: <strong>{{ student_name }}</strong></p>
+    <p><a href="/select_user">← Вернуться к списку пользователей</a> | <a href="/logout">Выйти</a></p>
+
+    <h2>Оценки студента "{{ student_name }}"</h2>
+
+    {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Дисциплина</th>
+                    <th>Оценка (Баллы)</th>
+                    <th>Макс.</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.grade }}</td>
+                    <td>{{ item.max }}</td>
+                        <td class="status-{{ item.status | lower | replace(' ', '-') }}">                        <strong>{{ item.status }}</strong>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Нет доступных данных об оценках.</p>
+    {% endif %}
+
+    <hr>
+</body>
+</html>

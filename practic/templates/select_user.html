@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Выберите пользователя</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .user-list a { display: block; margin: 10px 0; padding: 10px; background-color: #f4f4f4; border: 1px solid #ddd; text-decoration: none; color: #333; }
+        .user-list a:hover { background-color: #e9e9e9; }
+    </style>
+</head>
+<body>
+    <h1>Панель администратора</h1>
+    <p>Вы вошли как: <strong>{{ admin_name }}</strong> (Авторизация VK ID прошла успешно)</p>
+    <a href="/logout">Выйти</a>
+
+    <h2>Выберите студента для просмотра БРС</h2>
+
+    <div class="user-list">
+        {% for user in users %}
+        <a href="/grades/{{ user }}">Просмотреть данные: {{ user }}</a>
+        {% endfor %}
+    </div>
+
+    <hr>
+    <p style="font-size: small; color: grey;">Внешняя авторизация (VK ID) используется для подтверждения роли (Администратор), после чего становится доступен выбор данных из внутренней системы.</p>
+</body>
+</html>
